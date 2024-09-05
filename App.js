@@ -5,7 +5,26 @@ import { PieChart } from 'react-native-gifted-charts';
 const Header = () => {
   return (
     <View style={styles.header}>
+      <View style={styles.iconPlaceholder}></View>
       <Text style={styles.spanText}>OneTap</Text>
+      <View style={styles.iconPlaceholder}></View>
+    </View>
+  );
+};
+const Campaigns = () => {
+  return (
+    <View style={styles.campaignContainer}>
+      <View style={styles.topCampaignContainer}>
+        <View style={styles.campaignsTextContainer}>
+          <Text style={styles.campaignsText}>Campaigns</Text>
+        </View>
+        <View style={styles.rightContainer}>
+          <Text style={styles.optimizationScoreText}>Optimization Score</Text>
+          <Text style={styles.lowHighText}>Low - High</Text>
+        </View>
+      </View>
+
+      <View style={styles.bottomCampaignContainer}></View>
     </View>
   );
 };
@@ -15,28 +34,39 @@ const Frame = () => {
       <OptimizationCircle />
       <Title />
       <BudgetProgress />
+      <Campaigns />
+      <Button />
     </View>
   );
 };
+const Button = () => {
+  return(
+    <View style={styles.buttonContainer}>
+      <View style={styles.button}></View>
+    </View>
+  )
+}
 const OptimizationCircle = () => {
   const pieData = [
-    { value: 100, color: '#FFFFFF' }, 
+    { value: 10, color: '#8C28D2' },  
+    { value: 100, color: '#F2E8FF' },
   ];
+
   return (
     <PieChart
       data={pieData}
       donut
-      innerRadius={98} 
-      radius={98.5} 
-      innerCircleColor={'#FFFFFF'} 
-      strokeWidth={10} 
-      strokeColor={'#F2E8FF'} 
+      innerRadius={85}  
+      radius={100}      
+      innerCircleColor={'#FFFFFF'}
+      strokeWidth={0}
+      strokeColor={'#F2E8FF'}
       centerLabelComponent={() => (
         <View style={styles.textContainer}>
-          <Text style={styles.centerText}>0%</Text>
+          <Text style={styles.centerText}>10%</Text>
         </View>
       )}
-      containerStyle={styles.optimizationCircle} 
+      containerStyle={styles.optimizationCircle}
     />
   );
 };
@@ -75,11 +105,20 @@ const SliderWireframe = () => {
   );
 };
 
+const ContinueButton = () => {
+  return (
+    <View style={styles.bottombuttonContainer}>
+      <View style={styles.bottombutton}></View>
+    </View>
+  );
+};
+
 export default function App() {
   return (
     <View style={styles.container}>
       <Header />
       <Frame />
+      <ContinueButton />
     </View>
   );
 }
@@ -92,11 +131,25 @@ const styles = StyleSheet.create({
   },
   header: {
     width: 339, 
-    height: 52, 
-    paddingVertical: 14, 
+    height: 70, 
+    paddingVertical: 10, 
     paddingHorizontal: 0, 
-    justifyContent: 'space-between', 
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center', 
     opacity: 1, 
+  },
+  iconPlaceholder: {
+    width: 20,  
+    height: 20, 
+    backgroundColor: '#8826C7', 
+  },
+  spanText: {
+    //fontFamily: 'Inter-Black', 
+    fontSize: 22, 
+    fontWeight: '700', 
+    textAlign: 'center', 
+    color: '#8826C7', 
   },
   frame: {
     width: 339, 
@@ -104,23 +157,19 @@ const styles = StyleSheet.create({
     marginTop: 36, 
     opacity: 1, 
     alignItems: 'center',
+    paddingBottom: 80,
   },
   optimizationCircle: {
     width: 197.36, 
     height: 197, 
     justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: '#000000', 
-    shadowOffset: { width: 0, height: 4 }, 
-    shadowOpacity: 0.1, 
-    shadowRadius: 47.6, 
-    elevation: 5, 
+    alignItems: 'center', 
     opacity: 1, 
   },
   textContainer: {
     width: 85.36, 
     height: 39, 
-    backgroundColor: '#1C1C1C', 
+    backgroundColor: '#FFFFFF', 
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -128,7 +177,7 @@ const styles = StyleSheet.create({
     //fontFamily: 'Inter-Black', 
     fontSize: 44, 
     fontWeight: '400', 
-    lineHeight: 66, 
+    lineHeight: 45, 
     textAlign: 'center', 
     color: '#000000', 
     backgroundColor: '#FFFFFF',
@@ -139,7 +188,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     opacity: 1, 
-    marginTop: 20, 
+    marginTop: 40, 
   },
   titleText: {
     //fontFamily: 'Inter-Black', 
@@ -163,7 +212,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     opacity: 1, 
-    marginTop: 10, 
+    marginTop: 40, 
     backgroundColor: '#FFFFFF'
   },
   budgetFrame: {
@@ -235,6 +284,91 @@ const styles = StyleSheet.create({
     height: 13, 
     backgroundColor: '#8C28D2', 
     borderRadius: 80, 
+    opacity: 1, 
+  },
+  campaignContainer: {
+    width: 339,
+    height: 129,
+    justifyContent: 'space-between', 
+    marginTop: 30, 
+    backgroundColor: '#FFFFFF',
+  },
+  topCampaignContainer: {
+    width: '100%',
+    height: 49, 
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 2, 
+  },
+  campaignsTextContainer: {
+    width: 160, 
+    height: 30, 
+    justifyContent: 'center',
+  },
+  campaignsText: {
+    //fontFamily: 'Poppins',
+    fontSize: 30, 
+    fontWeight: '600',
+    lineHeight: 30,
+    textAlign: 'left',
+    color: '#000000', 
+  },
+  rightContainer: {
+    width: 169.5,
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    height: '100%',
+  },
+  optimizationScoreText: {
+    //fontFamily: 'Poppins',
+    fontSize: 14,
+    fontWeight: '400',
+    lineHeight: 18,
+    textAlign: 'right',
+    color: '#000000', 
+    
+  },
+  lowHighText: {
+    //fontFamily: 'Poppins',
+    fontSize: 14,
+    fontWeight: '600',
+    lineHeight: 18,
+    textAlign: 'right',
+    color: '#8826C7', 
+  },
+  bottomCampaignContainer: {
+    width: '100%',
+    height: 49, 
+    backgroundColor: '#E2B4F4', 
+    marginTop: 2, 
+  },
+  buttonContainer: {
+    width: '100%',
+    height: 72,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20, 
+  },
+  button: {
+    width: 72,
+    height: 72,
+    backgroundColor: '#8826C7', 
+    opacity: 1, 
+  },
+  bottombuttonContainer: {
+    width: 339, 
+    height: 54,
+    justifyContent: 'center',
+    alignItems: 'center',
+    opacity: 1, 
+    marginTop: 10, 
+  },
+  bottombutton: {
+    width: '100%', 
+    height: 54,
+    backgroundColor: '#B543E4', 
+    borderRadius: 10, 
     opacity: 1, 
   },
 });
