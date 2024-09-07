@@ -19,7 +19,7 @@ const Campaigns = () => {
           <Text style={styles.campaignsText}>Campaigns</Text>
         </View>
         <View style={styles.rightContainer}>
-          <Text style={styles.optimizationScoreText}>Optimization Score</Text>
+          <Text style={styles.optimizationScoreText}>OneTap Score</Text>
           <Text style={styles.lowHighText}>Low - High</Text>
         </View>
       </View>
@@ -75,7 +75,7 @@ const Title = () => {
   return (
     <View style={styles.titleContainer}>
       <Text style={styles.titleText}>
-        Your Optimization Score is <Text style={styles.spanText}>0%</Text>
+        Your OneTap Score is <Text style={styles.spanText}>0%</Text>
       </Text>
     </View>
   );
@@ -108,7 +108,9 @@ const SliderWireframe = () => {
 const ContinueButton = () => {
   return (
     <View style={styles.bottombuttonContainer}>
-      <View style={styles.bottombutton}></View>
+      <View style={styles.bottombutton}>
+        <Text style={styles.continueText}>Continue</Text>
+      </View>
     </View>
   );
 };
@@ -369,6 +371,20 @@ const styles = StyleSheet.create({
     height: 54,
     backgroundColor: '#B543E4', 
     borderRadius: 10, 
+    justifyContent: 'center', 
+    alignItems: 'center', 
     opacity: 1, 
+  },
+  continueText: {
+    width: 69,
+    height: 14,
+    //fontFamily: 'Poppins',
+    fontSize: 15,
+    fontWeight: '600',
+    lineHeight: 14,
+    letterSpacing: 0.03,
+    textAlign: 'center',
+    color: 'white',
+    opacity: 1,
   },
 });
