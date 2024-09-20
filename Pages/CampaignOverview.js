@@ -101,7 +101,7 @@ const ChartComponent = () => {
       <LineChart
         data={data}
         width={250}
-        height={200}
+        height={150}
         initialSpacing={0}
         thickness={2}
         isAnimated
@@ -384,7 +384,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     alignItems: 'flex-start',
     position: 'relative',
-    height: 250,  
+    height: 250, 
   },  
   chartTitleContainer: {
     flexDirection: 'row',
@@ -404,7 +404,7 @@ const styles = StyleSheet.create({
     width: 150, 
   },
   cardList: {
-    marginTop: 10,
+    marginTop: 2,
     flexDirection: 'column',
     justifyContent: 'space-between',
   },
@@ -440,11 +440,11 @@ const styles = StyleSheet.create({
   },
   numberText: {
     fontSize: 14,
-    fontWeight: '700',
     lineHeight: 21,
     color: '#8826C7',
     textAlign: 'right',
     marginRight: 4,
+    fontWeight: 'bold',
   },
   square: {
     width: 17,
@@ -479,6 +479,7 @@ const styles = StyleSheet.create({
   acontainer: {
     flexDirection: 'row',
     width: 385,
+    marginTop: 10,
   },
   buttonWrapper: {
     position: 'relative', 
@@ -487,12 +488,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    backgroundColor: '#8B3FFD', 
-    borderRadius: 24, 
+    backgroundColor: '#890FE5', 
+    borderRadius: 18, 
     paddingVertical: 10,
     paddingHorizontal: 20,
-    width: 320,
+    width: 345,
     zIndex: 1, 
+    left: -5,
   },
   text: {
     color: '#fff',
@@ -502,7 +504,7 @@ const styles = StyleSheet.create({
   },
   arrowContainer: {
     position: 'absolute', 
-    left: 314,
+    left: 336,
     top: '50%', 
     transform: [{ translateY: -16 }], 
     zIndex: 2, 
@@ -515,7 +517,7 @@ const styles = StyleSheet.create({
     borderTopColor: 'transparent',
     borderBottomColor: 'transparent',
     borderLeftWidth: 24, 
-    borderLeftColor: '#8B3FFD', 
+    borderLeftColor: '#890FE5', 
   },
 });
 
