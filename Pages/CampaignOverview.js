@@ -8,11 +8,11 @@ export default function App() {
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <TopBarComponent />
         <HeaderComponent />
-        <Overview />
+        <Total /> 
         <View style={styles.circularProgressWrapper}>
-        <CircularProgress />
+          <CircularProgress />
         </View>
-        <Total />
+        <Overview />
       </ScrollView>
     </SafeAreaView>
   );
@@ -76,8 +76,16 @@ const ChartComponent = () => {
 
   const data = selectedPeriod === 'week' ? weekData : selectedPeriod === 'month' ? monthData : yearData;
 
+  const maxValue = Math.max(...data.map(item => item.value));
+
+  const stepValue = Math.ceil(maxValue / 4); 
+
+  const spacing = selectedPeriod === 'week' ? 43 : selectedPeriod === 'month' ? 50 : 27;
+
+  const initialSpacing = spacing;
+
   const renderLabelComponent = (value) => (
-    <View style={{ backgroundColor: 'white', padding: 5, borderRadius: 20, elevation: 5, alignItems: 'center', position: 'absolute', top: -30 }}>
+    <View style={{ backgroundColor: 'white', padding: 3, borderRadius: 20, elevation: 5, alignItems: 'center', position: 'absolute', top: -30 }}>
       <Text style={{ color: '#6a0dad', fontWeight: 'bold' }}>{value}</Text>
     </View>
   );
@@ -98,11 +106,12 @@ const ChartComponent = () => {
           </TouchableOpacity>
         </View>
       </View>
+  
       <LineChart
         data={data}
-        width={250}
-        height={150}
-        initialSpacing={0}
+        width={338}
+        height={180}
+        initialSpacing={initialSpacing} 
         thickness={2}
         isAnimated
         adjustToWidth={true}
@@ -110,14 +119,15 @@ const ChartComponent = () => {
         endFillColor={'#ffffff'}
         startOpacity={0.7}
         endOpacity={0.1}
-        spacing={40}
+        spacing={spacing}  
         color={'#8B3FFD'}
-        yAxisTextStyle={{ color: '#000000' }} 
-        stepValue={50}
+        yAxisTextStyle={'#000000'} 
+        xAxisTextStyle={{ color: '#000000', fontSize: 10 }}
+        stepValue={stepValue}  
         showVerticalLines
         verticalLinesColor={'#f0c0e0'}
         showYAxisIndices={false}
-        noOfSections={4}
+        noOfSections={4} 
         yAxisColor={'#FFD700'}
         curved
         areaChart
@@ -159,9 +169,9 @@ const ArrowButton = () => {
           <Text style={styles.text}>$40 Today</Text>
         </View>
 
-        <View style={styles.arrowContainer}>
+        {/*<View style={styles.arrowContainer}>
           <View style={styles.arrow} />
-        </View>
+        </View>*/}
       </View>
     </View>
   );
@@ -339,8 +349,8 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
   },
   circularProgressWrapper: {
-    position: 'absolute',
-    top: 235,
+    position: 'absolute', 
+    top: 230, 
     left: 270,
     width: 80,
     height: 80,
@@ -366,13 +376,14 @@ const styles = StyleSheet.create({
   },
   overview: {
     paddingHorizontal: 16,
-    width: 375,
-    height: 500,
+    width: 380,
+    height: 550,
     backgroundColor: 'white',
     paddingBottom: 20,
+    paddingLeft: 8,
   },
   overviewTitle: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: '600',
     lineHeight: 27,
     color: '#8826C7',
@@ -380,11 +391,12 @@ const styles = StyleSheet.create({
   },
   chartContainer: {
     padding: 10,
-    width: 343, 
+    width: 385, 
     marginBottom: 20,
     alignItems: 'flex-start',
     position: 'relative',
     height: 250, 
+    marginLeft: -20,
   },  
   chartTitleContainer: {
     flexDirection: 'row',
@@ -409,7 +421,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   card: {
-    width: 343,
+    width: 365,
     height: 74,
     backgroundColor: '#FFFFFF',
     borderRadius: 8,
@@ -417,7 +429,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 0,
-    marginBottom: 12,
+    marginBottom: 5,
   },
   card1Text: {
     width: 230,
@@ -462,15 +474,17 @@ const styles = StyleSheet.create({
     padding: 7,
   },
   totalContainer: {
-    width: 375, 
-    height: 78,
+    width: 375,
+    height: 100, 
     backgroundColor: '#FFFFFF',
-    marginTop: 50, 
-    paddingHorizontal: 16, 
+    marginTop: -10, 
+    paddingHorizontal: 10, 
     alignSelf: 'center', 
+    position: 'relative', 
+    zIndex: 1, 
   },
   totalSpentText: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: '600',
     lineHeight: 27,
     textAlign: 'left',
@@ -492,7 +506,7 @@ const styles = StyleSheet.create({
     borderRadius: 18, 
     paddingVertical: 10,
     paddingHorizontal: 20,
-    width: 345,
+    width: 365,
     zIndex: 1, 
     left: -5,
   },
