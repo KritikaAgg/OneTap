@@ -17,6 +17,13 @@ export default function Home({ navigation }) {
             >
                 <Text style={styles.buttonText}>Go to CampaignOverview</Text>
             </TouchableOpacity>
+            <Text></Text>
+            <TouchableOpacity
+                style={styles.button}
+                onPress={() => navigation.navigate("AdReview")}
+            >
+                <Text style={styles.buttonText}>Go to AdReview</Text>
+            </TouchableOpacity>
         </View>
     );
 }
