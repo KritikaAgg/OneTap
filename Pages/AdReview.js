@@ -17,6 +17,7 @@ import { useNavigation } from '@react-navigation/native';
 import AdPreviewComponent from 'C:/OneTap/onetapproject/OneTap/Components/AdPreviewComponent.js';
 import { WebView } from 'react-native-webview';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const OptimizedFacebookAdsRevie = () => {
     const navigation = useNavigation();
@@ -150,17 +151,17 @@ const OptimizedFacebookAdsRevie = () => {
                             <View style={styles.actionsContainer}>
                                 <View style={styles.actionItem}>
                                     {/* Replace with your Like icon */}
-                                    <Icon name="thumb-up" style={styles.actionIcon} size={20} color="#565C65" />
+                                    <Ionicons name="thumbs-up-outline" style={styles.actionIcon} size={20} color="#484D54" />
                                     <Text style={styles.actionText}>Like</Text>
                                 </View>
                                 <View style={styles.actionItem}>
                                     {/* Replace with your Comment icon */}
-                                    <Icon name="comment" style={styles.actionIcon} size={20} color="#565C65" />
+                                    <Ionicons name="chatbox-outline" style={styles.actionIcon} size={20} color="#484D54" />
                                     <Text style={styles.actionText}>Comment</Text>
                                 </View>
                                 <View style={styles.actionItem}>
                                     {/* Replace with your Share icon */}
-                                    <Icon name="share" style={styles.actionIcon} size={20} color="#565C65" />
+                                    <Ionicons name="arrow-redo-outline" style={styles.actionIcon} size={20} color="#484D54" />
                                     <Text style={styles.actionText}>Share</Text>
                                 </View>
                             </View>
@@ -474,7 +475,7 @@ const styles = StyleSheet.create({
     learnMoreButton: {
         width: 99,
         height: 33,
-        backgroundColor: '#AEAEB2',
+        backgroundColor: '#D9D9DB',
         borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'center',
@@ -521,11 +522,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     actionText: {
-        color: '#565C65',
+        color: 'black',
         fontSize: 16,
     },
     dotsIcon: {
-        alignSelf: 'auto',
+        alignSelf: 'flex-start',
     },
     actionIcon: {
         marginRight: 5,
